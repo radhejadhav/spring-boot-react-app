@@ -6,7 +6,7 @@ export default function UserListComponents({ users, onPagination, totalPage, cur
     let element = []
     for (let index = 0; index < totalPage; index++) {
         element.push(
-            <PaginationItem key={index}>
+            <PaginationItem key={index} active={index == currentPage}>
                 <PaginationLink
                     onClick={e => onPagination(index)}>
                     {index}
@@ -51,33 +51,35 @@ export default function UserListComponents({ users, onPagination, totalPage, cur
                     }
                 </tbody>
             </Table>
-            <Pagination>
-                <PaginationItem>
-                    <PaginationLink
-                        first
-                        onClick={e => onPagination(1)}
-                    />
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationLink
-                        onClick={e => onPagination(currentPage - 1)}
-                        previous
-                    />
-                </PaginationItem>
-                {element}
-                <PaginationItem>
-                    <PaginationLink
-                        onClick={e => onPagination(currentPage + 1)}
-                        next
-                    />
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationLink
-                        onClick={e => onPagination(totalPage-1)}
-                        last
-                    />
-                </PaginationItem>
-            </Pagination>
+            <Container className='w-25'>
+                <Pagination>
+                    <PaginationItem >
+                        <PaginationLink
+                            first
+                            onClick={e => onPagination(0)}
+                        />
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationLink
+                            onClick={e => onPagination(currentPage - 1)}
+                            previous
+                        />
+                    </PaginationItem>
+                    {element}
+                    <PaginationItem>
+                        <PaginationLink
+                            onClick={e => onPagination(currentPage + 1)}
+                            next
+                        />
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationLink
+                            onClick={e => onPagination(totalPage - 1)}
+                            last
+                        />
+                    </PaginationItem>
+                </Pagination>
+            </Container>
         </Container>
     )
 }

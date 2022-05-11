@@ -7,6 +7,7 @@ import { setIsSessionValid } from './actions/LoginAction';
 import './App.css';
 import NavbarContainer from './containers/NavbarContainer';
 import Routers from './routes/Routes';
+import { UserSession } from './shared/UserSession';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
   }
 
   if (!sessionStorage.getItem('userSession')) {
-    sessionStorage.setItem('userSession', JSON.stringify(user))
+    sessionStorage.setItem('userSession', JSON.stringify(UserSession))
   }
 
   let userSessions = JSON.parse(sessionStorage.getItem('userSession'));
@@ -37,7 +38,11 @@ function App() {
   })
 
   return (
-    <Container fluid>
+    <Container fluid style={{
+      backgroundColor: '#ADD8E6',
+      paddingBottom:'10rem',
+      fontFamily:'Franklin Gothic Medium'
+  }}>
       <ToastContainer />
       <BrowserRouter>
         <NavbarContainer />

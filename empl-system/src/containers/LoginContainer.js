@@ -29,11 +29,11 @@ export default function LoginContainer() {
         })
     }
 
-    useEffect(()=>{
-        if(isSessionValid){
+    useEffect(() => {
+        if (isSessionValid) {
             navigate(HOME)
         }
-    },[isSessionValid])
+    }, [isSessionValid])
 
     const onChangeHandler = (event) => {
         dispatch({ type: "usernameError", value: "" })
@@ -45,7 +45,7 @@ export default function LoginContainer() {
                     dispatch(setErrors(element))
                 });
             })
-    } 
+    }
 
     return (
         <LoginComponent

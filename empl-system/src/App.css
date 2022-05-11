@@ -32,15 +32,22 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
-.backImage{
+
+.backImage {
   height: 1000px;
   background-image: url(../public/static/pexels-mudassir-ali-2680270.jpg);
 }
-.routes{
+
+.routes {
   margin: auto;
   padding: 100px;
 }
+
+/* .container{
+  display:contents;
+} */

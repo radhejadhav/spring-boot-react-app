@@ -7,7 +7,10 @@ export default function NavbarComponent({ userSessions, username, logout }) {
 
     return (
         <div>
-            <Navbar color="light" className='rounded-2' expand="xl" light>
+            <Navbar className='rounded-2' expand="xl"
+                style={{
+                    backgroundColor: '#8FBC8F'
+                }}>
                 <NavbarBrand href="/">reactstrap</NavbarBrand>
                 <NavbarToggler />
                 <Collapse navbar>

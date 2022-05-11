@@ -16,8 +16,12 @@ export default function UserListContainer() {
   const onPagination = (data) => {
       if(!(data>=totalPage) && !(data<0)){
         dispatch(setPage(data))
-      }else{
-        toast.error("Page does not exist !",{autoClose:1000})
+      }
+      if(data<0){
+        toast.error("You are on first page !",{autoClose:1000})
+      }
+      if(data>=totalPage){
+        toast.error("You are on last page !",{autoClose:1000})
       }
   }
 

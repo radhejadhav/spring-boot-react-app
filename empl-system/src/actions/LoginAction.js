@@ -3,11 +3,11 @@ import { IS_SESSION_VALID, USER_PROFILE } from '../shared/ReducerConstant';
 export const setUserProfile = (response) => {
     return {
         type: USER_PROFILE,
-        value: {...response}
+        value: { ...response }
     }
 }
 
-export const setIsSessionValid=(data)=>{
+export const setIsSessionValid = (data) => {
 
     return {
         type: IS_SESSION_VALID,
@@ -15,19 +15,19 @@ export const setIsSessionValid=(data)=>{
     }
 }
 
-export const setErrors=(data)=>{
+export const setErrors = (data) => {
     return {
-        type:`${data.path}Error`,
-        value:data.message
+        type: `${data.path}Error`,
+        value: data.message
     }
 }
 
-export const tokenRequest = (data) => {
-    return {
-        type: "login",
-        value: data
-    }
-}
+export const tokenRequest = (data) => ({
+
+    type: "login",
+    value: data
+
+})
 
 export const profileRequest = (data) => {
     return {

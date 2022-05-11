@@ -24,20 +24,6 @@ public class UserService implements UserDetailsService {
 
     @Autowired private AuthUserDao authUserDao;
 
-    private List<AuthUser> authUserList;
-
-    UserService(){
-//        authUserList = new ArrayList<>();
-//        UserDetails user = User.builder()
-//                .username("user")
-//                .password("$2a$10$e59rGaFvpijWXLh03j0aZOzBYQNrIRIjlB8sGwLvBL35fecblsW1m")
-//                .roles("USER")
-//                .build();
-//        AuthUser authUser1 = new AuthUser("radhe@gmail.com","radhe","user","$2a$10$e59rGaFvpijWXLh03j0aZOzBYQNrIRIjlB8sGwLvBL35fecblsW1m",new ArrayList<>(),true);
-//
-//        authUserList.add(authUser1);
-    }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

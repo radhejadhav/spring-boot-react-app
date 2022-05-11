@@ -1,21 +1,30 @@
 import axios from "axios"
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { setIsSessionValid } from "../actions/LoginAction";
+import NavbarContainer from "../containers/NavbarContainer";
 import { API_HOST_URL, GET, PATH_GET_PAGE, PATH_PROFILE, PATH_REGISTER, POST, TOKEN } from "../shared/AppConstant";
+import { UserSession } from "../shared/UserSession";
 
-export const callApi = (_type, _url, _params, _headers, _data) => {
+export const callApi = async (_type, _url, _params, _headers, _data) => {
 
-    return axios({
-        method: _type,
-        url: _url,
-        params: _params,
-        headers: _headers,
-        data: _data
-    })
-        .then((response) => {
-            return response
-        })
-        .catch((error) => {
-            return error
-        })
+    try {
+        const response = await axios({
+            method: _type,
+            url: _url,
+            params: _params,
+            headers: _headers,
+            data: _data
+        });
+        return response;
+    } catch (error) {
+        if (error.message == "Request failed with status code 401") {
+            toast.error(`Session exprired, please login again.`, { autoClose: 3000, position: toast.POSITION.TOP_LEFT });
+            sessionStorage.setItem('userSession', JSON.stringify(UserSession));
+            NavbarContainer.logout()
+        }
+        return error;
+    }
 }
 
 export const tokenApi = (data) => {

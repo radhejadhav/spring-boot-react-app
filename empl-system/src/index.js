@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import LoginReducer from './reducer/LoginReducer';
@@ -10,9 +9,9 @@ import UserListReducer from './reducer/UserListReducer';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from '@redux-saga/core';
 import RootSaga from './saga/RootSaga';
-// import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import 'react-toastify/dist/ReactToastify.css';
+import './index.css';
 
 const sagaMiddleware = createSagaMiddleware();
 

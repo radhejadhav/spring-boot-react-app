@@ -3179,7 +3179,7 @@
     display: block;
     padding: 0.25rem 0.75rem; }
     .nav-link:hover, .nav-link:focus {
-      text-decoration: none; }
+      text-decoration: dotted; }
     .nav-link.disabled {
       color: #8898aa;
       pointer-events: none;
