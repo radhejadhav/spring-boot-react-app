@@ -1,6 +1,7 @@
 package com.empl.system.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,6 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
+@JsonPOJOBuilder
 public class AuthUser implements UserDetails {
 
     @Id

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Pagination, PaginationItem, PaginationLink, Table } from 'reactstrap'
 
-export default function UserListComponents({ users, onPagination, totalPage, currentPage }) {
+export default function UserListComponents({ users, onPagination, totalPage, currentPage, goToUser }) {
 
     let element = []
     for (let index = 0; index < totalPage; index++) {
@@ -40,7 +40,7 @@ export default function UserListComponents({ users, onPagination, totalPage, cur
                 <tbody>
                     {
                         users.map((data, index) => (
-                            <tr key={index}>
+                            <tr key={index} onClick={e=>goToUser(data)}>
                                 <th>{data.firstName}</th>
                                 <td>{data.lastName}</td>
                                 <td>{data.email}</td>

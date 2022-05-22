@@ -4,6 +4,7 @@ import com.empl.system.filters.JwtFilter;
 import com.empl.system.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -21,6 +22,7 @@ import org.springframework.web.filter.CorsFilter;
 import javax.servlet.http.HttpServletResponse;
 
 @EnableWebSecurity
+@Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

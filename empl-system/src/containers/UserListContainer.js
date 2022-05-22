@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Outlet, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { pageRequest, setPage } from '../actions/UserAction';
 import UserListComponents from '../components/UserListComponents';
@@ -7,6 +8,7 @@ import UserListComponents from '../components/UserListComponents';
 export default function UserListContainer() {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { userList, page, size, totalPage } = useSelector(state => state.users)
 
@@ -24,6 +26,9 @@ export default function UserListContainer() {
         toast.error("You are on last page !",{autoClose:1000})
       }
   }
+  const goToUser = (user) => {
+    navigate(`/user/list/${user.username}`)
+  }
 
   useEffect(() => {
     let requestHeaders = {
@@ -39,11 +44,16 @@ export default function UserListContainer() {
   }, [page, size])
 
   return (
-    <UserListComponents
+    <div>
+      <UserListComponents
       currentPage = {page}
       users={userList}
       onPagination = {onPagination}
       totalPage = {totalPage}
-    />
+      goToUser = {goToUser}
+    >
+    </UserListComponents>
+    <Outlet/>
+    </div>
   )
 }

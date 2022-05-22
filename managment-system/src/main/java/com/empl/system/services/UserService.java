@@ -17,12 +17,17 @@ import javax.security.auth.login.AccountExpiredException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
 
     @Autowired private AuthUserDao authUserDao;
+
+    public UserService(AuthUserDao authUserDao) {
+        this.authUserDao = authUserDao;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -50,8 +55,10 @@ public class UserService implements UserDetailsService {
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }
+    }
 
+    public List<AuthUser> getAllUser(){
 
-
+        return authUserDao.findAll();
     }
 }

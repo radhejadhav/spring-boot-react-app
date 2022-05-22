@@ -13,7 +13,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.websocket.server.PathParam;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api")
@@ -52,4 +54,18 @@ public class HomeController {
 
         return ResponseEntity.ok(userPage);
     }
+
+    @GetMapping(value = "/healthcheck")
+    public ResponseEntity<String> healthcheck(@RequestParam String format, HttpServletResponse response) {
+        response.setHeader("Content-Type","application/json");
+        if(format == "short"){
+            return ResponseEntity.ok("\"status\"+\":\"+\"OK\"");
+        }if(format == "full"){
+            Date dt = new Date();
+            return ResponseEntity.ok("currentTime"+":"+dt+", "+"status : OK");
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
 }
+
+

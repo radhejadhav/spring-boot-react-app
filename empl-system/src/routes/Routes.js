@@ -8,6 +8,7 @@ import AboutComponent from "../components/AboutComponent";
 import ProductServiceComponent from "../components/ProductServiceComponent";
 import { ABOUT, HOME, LOGIN, PROFILE, REGISTER, SERVICE, USERS } from "../shared/RouterConstant";
 import UserListContainer from "../containers/UserListContainer";
+import UserComponent from "../components/UserComponent";
 
 
 const Routers = () => {
@@ -15,7 +16,9 @@ const Routers = () => {
         <Route element={<ProtectedRoute />}>
             <Route path={PROFILE} element={<DashboardContainer />} />
             <Route path={SERVICE} element={<ProductServiceComponent />} />
-            <Route path={USERS} element={<UserListContainer />} />
+            <Route path={USERS} element={<UserListContainer />}>
+                <Route path={":username"} element={<UserComponent />} />
+            </Route>
         </Route>
         <Route exact path={HOME} element={<Home />} />
         <Route path={LOGIN} element={<LoginContainer />} />
